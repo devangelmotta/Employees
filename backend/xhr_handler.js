@@ -1,6 +1,6 @@
 const endpoint = require('./api.js')
 const fetch = require('node-fetch');
-const { findUser, saveUserLocal, updateUserLocal, deleteUserLocal } = require('./service-handle-db-local')
+//const { findUser, saveUserLocal, updateUserLocal, deleteUserLocal } = require('./service-handle-db-local')
 
 // Helpers for handle xhr request
 
@@ -21,7 +21,7 @@ async function getEmployees(){
 }
 
 async function createEmployee( name, salary, age){
-    let createUser = await saveUserLocal(name, salary, age)
+    //let createUser = await saveUserLocal(name, salary, age)
     let query = await fetch(endpoint.createEmployee, {
             method: 'POST',
             headers: {
@@ -44,7 +44,7 @@ async function createEmployee( name, salary, age){
 }
 
 async function updateEmployee(id, name, salary, age){
-    let updateUser = await updateUserLocal(id, name, salary, age)
+    //let updateUser = await updateUserLocal(id, name, salary, age)
     let query = await fetch(`${endpoint.updateEmployee}`+`${id}`, {
             method: 'PUT',
             headers: {
@@ -67,7 +67,8 @@ async function updateEmployee(id, name, salary, age){
 }
 
 async function deleteEmployee(id){
-    let deleteUser = await deleteUserLocal(id)
+    //let deleteUser = await deleteUserLocal(id)
+
     let query = await fetch(`${endpoint.deleteEmployee}`+`${id}`, {
             method: 'DELETE',
             headers: {

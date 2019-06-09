@@ -26,7 +26,7 @@ export class GetEmployeesComponent implements OnInit {
   ngOnInit() {
     this.bs
       .getEmployees()
-      .subscribe((data: Employees[]) => {
+      .subscribe((data: any) => {
         this.employees = data.dataEmployees;
 
     });

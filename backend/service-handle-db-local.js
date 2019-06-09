@@ -1,5 +1,6 @@
-const { getEmployees } = require('./xhr_handler')
+const endpoint = require('./api.js')
 const mongoose = require('mongoose');
+const fetch = require('node-fetch');
 const EmployeesModel = require('./db-models/employees');
 
  var date = new Date()
@@ -47,17 +48,23 @@ async function deleteUserLocal(id){
 
 async function saveManyUsers(){
 
-    let getUsers = await getEmployees();
-
-    if(getUsers){
+    let query = await fetch(endpoint.allEmployees, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
+        }
+    })
+    let data = await query.json();
+    if(typeof data === 'object'){
         let data = await EmployeesModel.find();
         if(data){
             if(data.length>0){
-                let saveMany = await EmployeesModel.updateMany(getUsers)
+                let saveMany = await EmployeesModel.updateMany(data)
                 console.log("Update data: ", saveMany)
          
             }else{
-                let inertMany = await EmployeesModel.insertMany(getUsers)
+                let inertMany = await EmployeesModel.insertMany(data)
                 console.log("Update data: ", inertMany) 
             }
         }

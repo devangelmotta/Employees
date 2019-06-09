@@ -5,6 +5,7 @@ function callUpdateDatabase() {
     setInterval(function(){ saveManyUsers() }, 10000);
   }
 
-  callUpdateDatabase()
+
+ callUpdateDatabase()
 
 module.exports= callUpdateDatabase;

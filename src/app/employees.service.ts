@@ -17,11 +17,10 @@ export class EmployeesService {
     private route: ActivatedRoute,
     private router: Router ) { }
 
-
-  getEmployees(): Observable<Employees[]> {
+  getEmployees() {
     return this
            .http
-           .get<Employees[]>(`${this.uri}/empleados`)
+           .get(`${this.uri}/empleados`)
   }
 
   addEmployee(employee_name, employee_salary, employee_age) {
@@ -49,7 +48,7 @@ export class EmployeesService {
    getEmployee(id) {
     return this
             .http
-            .get<Employees[]>(`${this.uri}/empleado/${id}`);
+            .get(`${this.uri}/empleado/${id}`);
     }
 
     deleteEmployee(id) {

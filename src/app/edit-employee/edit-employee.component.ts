@@ -40,8 +40,7 @@ export class EditEmployeeComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log("Params id: ", params['id'])
-      this.bs.getEmployee(params['id']).subscribe(res => {
-        console.log("Datos updateables devueltos: ", res.dataEmployees)
+      this.bs.getEmployee(params['id']).subscribe((res: any) => {
         this.employees = res.dataEmployees;
     });
   });
