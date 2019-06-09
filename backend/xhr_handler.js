@@ -16,7 +16,7 @@ async function getEmployees(){
     if(data){
         return data;
     }else {
-        return undefined;
+        return false;
     }
 }
 
